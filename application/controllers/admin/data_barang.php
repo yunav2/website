@@ -11,7 +11,7 @@ class Data_barang extends CI_Controller {
         $this->load->view('templates_admin/footer');
 	}
 
-	public function action() {
+	public function tambah_aksi() {
 		$nama_barang = $this->input->post('nama_barang');
 		$keterangan = $this->input->post('keterangan');
 		$kategori = $this->input->post('kategori');
