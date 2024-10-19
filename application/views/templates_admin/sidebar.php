@@ -6,7 +6,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
       
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('admin/dashboard_admin') ?>">
         <div class="sidebar-brand-icon">
           <i class="fas fa-store"></i>
         </div>
@@ -18,20 +18,20 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="<?php echo base_url('admin/dashboard_admin') ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="<?php echo base_url('admin/dashboard_admin') ?>">
           <i class="fas fa-fw fa-database"></i>
           <span>Data Keuangan</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="<?php echo base_url('admin/dashboard_admin') ?>">
           <i class="fas fa-fw fa-file-invoice"></i>
           <span>Invoices</span></a>
       </li>
