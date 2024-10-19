@@ -5,7 +5,7 @@ class Model_barang extends CI_Model{
         return $this->db->get('data_barang');
     }
 
-    public function input_data($data, $table){
+    public function tambah_barang($data, $table){
         $this->db->insert($table, $data);
     }
 }
