@@ -31,7 +31,7 @@ class Data_barang extends CI_Controller {
 		}
 	
 		$data = array(
-			'nama_brg' => $nama_barang,
+			'nama_barang' => $nama_barang,
 			'keterangan' => $keterangan,
 			'kategori' => $kategori,
 			'stok' => $stok,
