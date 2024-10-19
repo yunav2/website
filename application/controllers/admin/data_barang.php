@@ -1,12 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard_admin extends CI_Controller {
+class Data_barang extends CI_Controller {
 	public function index()
 	{
+        $data['barang'] = $this->model_barang->tampil_data()->result();
 		$this->load->view('templates_admin/head');
 		$this->load->view('templates_admin/sidebar');
-        $this->load->view('admin/dashboard');
+        $this->load->view('admin/data_barang', $data);
         $this->load->view('templates_admin/footer');
 	}
 
@@ -37,7 +38,7 @@ class Dashboard_admin extends CI_Controller {
 			'harga' => $harga,
 			'gambar' => $gambar
 		);
-		$this->model_barang->tambah_barang($data, 'tb_barang');
+		$this->model_barang->tambah_barang($data, 'data_barang');
 		redirect('admin/data_barang/index');
 	}
 }

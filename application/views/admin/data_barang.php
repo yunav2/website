@@ -17,7 +17,7 @@
         foreach ($barang as $brg) : ?>
         <tr>
             <td><?php echo $no++ ?></td>
-            <td><?php echo $brg->nama_brg ?></td>
+            <td><?php echo $brg->nama_barang ?></td>
             <td><?php echo $brg->keterangan ?></td>
             <td><?php echo $brg->kategori ?></td>
             <td><?php echo $brg->harga ?></td>
@@ -41,7 +41,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <form action="<?php echo base_url() . 'admin/data_barang/tambah_aksi'; ?>" method="post" enctype="multipart/form-data">
+        <form action="<?php echo base_url() . 'admin/data_barang/action'; ?>" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Nama Barang</label>
                 <input type="text" name="nama_brg" class="form-control">
