@@ -41,5 +41,11 @@ class Data_barang extends CI_Controller {
 		$this->model_barang->tambah_barang($data, 'data_barang');
 		redirect('admin/data_barang/index');
 	}
+
+	public function hapus($id){
+		$where = array('id' => $id);
+		$this->model_barang->delete($where, 'data_barang');
+		redirect('admin/data_barang/index');
+	}
 }
 
