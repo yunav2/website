@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#tambah_barang"><i class="fas fa-plus fa-sm"></i>Tambah Barang</button>
-
+    
     <table class="table table-bordered">
         <tr>
             <th>No</th>
@@ -24,7 +24,7 @@
             <td><?php echo $brg->stok ?></td>
             <td><?php echo anchor('admin/data_barang/detail/' . $brg->id_barang, '<div class="btn btn-success btn-sm"><i class="fas fa-search-plus"></i></div>') ?></td>
             <td><?php echo anchor('admin/data_barang/edit/' . $brg->id_barang, '<div class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></div>') ?></td>
-            <td><?php echo anchor('admin/data_barang' . $brg->id_barang, '<id_barangiv class="btn btn-id_baranganger btn-sm"><i class="fas fa-trash"></i></id_barangiv>') ?></td>
+            <td><?php echo anchor('admin/data_barang/delete/' . $brg->id_barang, '<id_barangiv class="btn btn-id_baranganger btn-sm"><i class="fas fa-trash"></i></id_barangiv>') ?></td>
         </tr>
         <?php endforeach; ?>
     </table>
