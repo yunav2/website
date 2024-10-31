@@ -9,23 +9,40 @@ class Model_barang extends CI_Model{
         $this->db->insert($table, $data);
     }
 
-    public function edit_barang($where, $table){
+    public function editBarang($where, $table)
+    {
         return $this->db->get_where($table, $where);
     }
 
-    public function update_barang($where, $data, $table){
+    public function updateBarang($data, $where, $table)
+    {
         $this->db->where($where);
         $this->db->update($table, $data);
     }
 
-    public function delete_barang($where, $table){
+    public function hapusBarang($where, $table)
+    {
         $this->db->where($where);
         $this->db->delete($table);
     }
 
-    public function search($keyword){
-        $this->db->like('id', $keyword);
-        $this->db->or_like('nama', $keyword);
-        return $this->db->get('data_barang')->result();
+    public function get_max_id($table)
+    {
+        $this->db->select_max('id_barang');
+        $query = $this->db->get($table);
+        return $query->row()->id_barang;
+    }
+
+    public function find($id)
+    {
+        $result = $this->db->where('id_barang', $id)
+            ->limit(1)
+            ->get('data_barang');
+
+        if ($result->num_rows() > 0) {
+            return $result->row();
+        } else {
+            return array();
+        }
     }
 }

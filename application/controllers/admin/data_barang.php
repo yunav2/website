@@ -29,6 +29,9 @@ class Data_barang extends CI_Controller {
 				$gambar = $this->upload->data('file_name');
 			}
 		}
+
+        $max_id = $this->model_barang->get_max_id('data_barang');
+        $id_brg = $max_id + 1;
 	
 		$data = array(
 			'nama_barang' => $nama_barang,
@@ -42,54 +45,50 @@ class Data_barang extends CI_Controller {
 		redirect('admin/data_barang/index');
 	}
 
-	public function edit ($id){
-		$where = array('id' -> $id);
-		$data['barang'] = $this->model_barang->edit_barang($where, 'data_barang')->result();
+	public function edit($id)
+    {
+        $where = array('id_barang' => $id);
+        $data['barang'] = $this->model_barang->editBarang($where, 'data_barang')->result_array();
 		$this->load->view('templates_admin/head');
 		$this->load->view('templates_admin/sidebar');
-		$this->load->view('admin/edit_barang', $data);
-		$this->load->view('templates_admin/footer');
-	}
+        $this->load->view('admin/edit_barang', $data);
+        $this->load->view('templates_admin/footer');
+    }
 
-	public function update(){
-		$id = $this->input->post('id');
-		$nama_barang = $this->input->post('nama_barang');
-		$keterangan = $this->input->post('keterangan');
-		$kategori = $this->input->post('kategori');
-		$stok = $this->input->post('stok');
-		$harga = $this->input->post('harga');
-		$gambar = $_FILES['gambar']['name'];
-		if ($gambar = ''){}else{
-			$config ['upload_path'] = './uploads';
-			$config ['allowed_types'] = 'jpg|jpeg|png|gif';
-	
-			$this->load->library('upload', $config);
-			if(!$this->upload->do_upload('gambar')){
-				echo "Gagal Upload";
-			}else{
-				$gambar = $this->upload->data('file_name');
-			}
-		}
-	
-		$data = array(
-			'nama_barang' => $nama_barang,
-			'keterangan' => $keterangan,
-			'kategori' => $kategori,
-			'stok' => $stok,
-			'harga' => $harga,
-			'gambar' => $gambar
-		);
+    public function update()
+    {
+    $id_barang = $this->input->post('id_barang');
+    $nama_barang = $this->input->post('nama_barang');
+    $keterangan = $this->input->post('keterangan');
+    $kategori = $this->input->post('kategori');
+    $stok = $this->input->post('stok');
+    $harga = $this->input->post('harga');
 
-		$where = array('id' => $id);
+    $data = array(
+        'nama_barang' => $nama_barang,
+        'keterangan' => $keterangan,
+        'kategori' => $kategori,
+        'harga' => $harga,
+        'stok' => $stok
+    );
 
-		$this->model_barang->update_barang($where, $data, 'data_barang');
-		redirect('admin/data_barang/index');
-	}
+    $where = array('id_barang' => $id);
 
-	public function delete($id){
-		$where = array('id' -> $id);
-		$this->model_barang->delete_barang($where, 'data_barang');
-		redirect('admin/data_barang/index');
-	}
+    $this->model_barang->updateBarang($data, $where, 'data_barang');
+    redirect('admin/data_barang/index');
+    }
+
+    public function delete($id)
+    {
+        $where = array('id_barang' => $id);
+
+        // delete gambar
+        $gambar = $this->model_barang->editBarang($where, 'data_barang')->result_array()[0]['gambar_brg'];
+        $path = './assets/uploads/' . $gambar;
+        unlink($path);
+
+        $this->model_barang->hapusBarang($where, 'data_barang');
+        redirect('admin/data_barang/');
+    }
 }
 
