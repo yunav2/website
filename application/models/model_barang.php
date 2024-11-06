@@ -35,7 +35,7 @@ class Model_barang extends CI_Model{
 
     public function find($id)
     {
-        $result = $this->db->where('id_barang', $id)
+        $result = $this->db->where('id_barang', $id_barang)
             ->limit(1)
             ->get('data_barang');
 

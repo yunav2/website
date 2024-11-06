@@ -72,7 +72,7 @@ class Data_barang extends CI_Controller {
         'stok' => $stok
     );
 
-    $where = array('id_barang' => $id);
+    $where = array('id_barang' => $id_barang);
 
     $this->model_barang->updateBarang($data, $where, 'data_barang');
     redirect('admin/data_barang/index');
@@ -80,7 +80,7 @@ class Data_barang extends CI_Controller {
 
     public function delete($id)
     {
-        $where = array('id_barang' => $id);
+        $where = array('id_barang' => $id_barang);
 
         // delete gambar
         $gambar = $this->model_barang->editBarang($where, 'data_barang')->result_array()[0]['gambar_brg'];
